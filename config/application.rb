@@ -15,5 +15,11 @@ module TransportManager
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # factory_bot
+    # override fixture generators for test unit
+    config.generators do |g|
+      g.test_unit fixture: false, fixture_replacement: :factory_bot
+    end
   end
 end
