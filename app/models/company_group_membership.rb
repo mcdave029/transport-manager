@@ -19,6 +19,10 @@
 #  fk_rails_...  (company_group_id => company_groups.id)
 #
 class CompanyGroupMembership < ApplicationRecord
+  include StringEnum
+
+  enum_init memberable_type: %w[Admin Driver Mechanic]
+
   belongs_to :company_group
   belongs_to :memberable, polymorphic: true
 end

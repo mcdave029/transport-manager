@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :company_group_membership do
-    company_group { nil }
-    memberable { nil }
+    company_group
+    association :memberable, factory: :admin
   end
 end

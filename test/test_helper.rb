@@ -13,4 +13,12 @@ class ActiveSupport::TestCase
 
   # factory_bot
   include FactoryBot::Syntax::Methods
+
+  # https://github.com/thoughtbot/shoulda-matchers#rails-apps-1
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :minitest
+      with.library :rails
+    end
+  end
 end

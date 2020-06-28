@@ -20,8 +20,15 @@
 #
 require 'test_helper'
 
+# Group of company model test
 class CompanyGroupMembershipTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  context 'associations' do
+    should belong_to(:company_group)
+    should belong_to(:memberable)
+  end
+
+  context 'validations' do
+    should validate_inclusion_of(:memberable_type)
+      .in_array(CompanyGroupMembership::MEMBERABLE_TYPES)
+  end
 end
