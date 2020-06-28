@@ -31,4 +31,24 @@ class CompanyGroupMembershipTest < ActiveSupport::TestCase
     should validate_inclusion_of(:memberable_type)
       .in_array(CompanyGroupMembership::MEMBERABLE_TYPES)
   end
+
+  test 'Should be valid memberable for Admin' do
+    membership = build(:company_group_membership)
+    assert membership.save
+  end
+
+  test 'Should be valid memberable for Driver' do
+    membership = build(:company_group_membership, memberable: create(:driver))
+    assert membership.save
+  end
+
+  test 'Should be valid memberable for Mechanic' do
+    membership = build(:company_group_membership, memberable: create(:mechanic))
+    assert membership.save
+  end
+
+  test 'Should be invalid memberable for Owner' do
+    membership = build(:company_group_membership, memberable: create(:owner))
+    refute membership.save
+  end
 end
